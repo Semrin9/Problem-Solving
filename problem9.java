@@ -1,71 +1,69 @@
-// Hussien has two strings A, B he can make only one operation that can swap any two letters in the String A.
-
-// Given two strings A, B if Hussien can make them equal print "YES", otherwise print "NO".
+// One day Vasya decided to have a look at the results of Berland 1910 Football Championship’s finals. Unfortunately he didn't find the overall score of the match; however, he got hold of a profound description of the match's process. On the whole there are n lines in that description each of which described one goal. Every goal was marked with the name of the team that had scored it. Help Vasya, learn the name of the team that won the finals. It is guaranteed that the match did not end in a tie.
 
 // Input Format
 
-// Two lines of the input contains two strings A in the first line, and B in the second line, (2≤|A|,|B|≤105).
+// The first line contains an integer n (1 ≤ n ≤ 100) — the number of lines in the description. Then follow n lines — for each goal the names of the teams that scored it. The names are non-empty lines consisting of uppercase Latin letters whose lengths do not exceed 10 symbols. It is guaranteed that the match did not end in a tie and the description contains no more than two different teams.
 
 // Constraints
 
-// Note: Hussien will make this operation exactly one.
+// .
 
 // Output Format
 
-// print "YES" if he can make them equal otherwise print "NO".
+// Print the name of the winning team. We remind you that in football the team that scores more goals is considered the winner.
 
 // Sample Input 0
 
-// aba
-// aab
+// 1
+// ABC
 // Sample Output 0
 
-// YES
+// ABC
 // Sample Input 1
 
-// abc
-// def
+// 5
+// A
+// ABA
+// ABA
+// A
+// A
 // Sample Output 1
 
-// NO
+// A
 
 import java.util.*;
 
-public class problem9 {
-    public static void main(String[] args) {
+class problem9 {
+public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        String A = sc.next();
-        String B = sc.next();
+    Scanner sc = new Scanner(System.in);
 
-        if (A.length() != B.length()) {
-            System.out.println("NO");
-            return;
-        }
+    short n = sc.nextShort();
+    String team1 = "";
+    String team2 = "";
+    String input = "";
 
-        int[] diff = new int[2];
-        int diffCount = 0;
-        
-        for (int i = 0; i < A.length(); i++) {
-            if (A.charAt(i) != B.charAt(i)) {
-                if (diffCount >= 2) {
-                    System.out.println("NO");
-                    return;
-                }
-                diff[diffCount++] = i;
-            }
-        }
-        
-        if (diffCount == 2) {
-            if (A.charAt(diff[0]) == B.charAt(diff[1]) &&
-                A.charAt(diff[1]) == B.charAt(diff[0])) {
-                System.out.println("YES");
-            } else {
-                System.out.println("NO");
-            }
+    short team1Score = 0;
+    short team2Score = 0;
+
+    for (int i = 0; i < n; i++) {
+        input = sc.next();
+        if (team1.equals("")) {
+            team1 = input;
+            team1Score++;
+        } else if (team1.equals(input)) {
+            team1 = input;
+            team1Score++;
         } else {
-
-            System.out.println("NO");
+            team2 = input;
+            team2Score++;
         }
     }
+
+    if (team1Score > team2Score) {
+        System.out.println(team1);
+    } else {
+        System.out.println(team2);
+    }
+}
 }
