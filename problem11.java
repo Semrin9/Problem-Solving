@@ -27,7 +27,7 @@
 // Sample Output 0
 
 // 3
- 
+
 // 2 1
 // Sample Input 1
 
@@ -40,30 +40,33 @@
 
 // 3 2 1
 
-import java.util.Scanner;
+import java.util.*;
 
 public class problem11 {
     public static void main(String[] args) {
-        
+
         Scanner sc = new Scanner(System.in);
+
         int n = sc.nextInt();
-        
-        int[] snacks = new int[n];
+        int exp = 1;
 
-        for(int i = 0; i < n; i++) {
-            snacks[i] = sc.nextInt();
-        }
+        Stack <Integer> tower = new Stack <> ();
 
-        for(int i = 0; i < n; i++) {
-            if(snacks[i] == n) {
-                System.out.println(snacks[i]);
-            } else {
-                System.out.println();
+        for (int i = 0; i < n; i++) {
+            int snack = sc.nextInt();
+            boolean placed = false;
+
+            while (exp <= snack) {
+                tower.push(snack);
+                exp++;
+                placed = true;
             }
 
-            while(i < n && snacks[i] == n - i) {
-                System.out.print(snacks[i] + " ");
-                i++;
+            if (placed) {
+                System.out.print(tower.peek() + " ");
+                tower.pop();
+            } else {
+                System.out.println();
             }
         }
     }
