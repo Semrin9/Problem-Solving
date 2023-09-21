@@ -46,25 +46,26 @@ public class problem11 {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-
+        
         int n = sc.nextInt();
-        int exp = 1;
-
-        Stack <Integer> tower = new Stack <> ();
-
+        int[] snacks = new int[n];
+        
         for (int i = 0; i < n; i++) {
-            int snack = sc.nextInt();
-            boolean placed = false;
-
-            while (exp <= snack) {
-                tower.push(snack);
-                exp++;
-                placed = true;
-            }
-
-            if (placed) {
-                System.out.print(tower.peek() + " ");
-                tower.pop();
+            snacks[i] = sc.nextInt();
+        }
+        
+        int max = n;
+        Set<Integer> hsh = new HashSet<>();
+        
+        for (int i = 0; i < n; i++) {
+            hsh.add(snacks[i]);
+            
+            if (snacks[i] == max) {
+                while (hsh.contains(max)) {
+                    System.out.print(max + " ");
+                    max--;
+                }
+                System.out.println();
             } else {
                 System.out.println();
             }
