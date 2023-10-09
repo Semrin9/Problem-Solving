@@ -4,9 +4,7 @@
 
 // The first line contains an integer n (1 ≤ n ≤ 100) — the number of lines in the description. Then follow n lines — for each goal the names of the teams that scored it. The names are non-empty lines consisting of uppercase Latin letters whose lengths do not exceed 10 symbols. It is guaranteed that the match did not end in a tie and the description contains no more than two different teams.
 
-// Constraints
-
-// .
+// Constraints.
 
 // Output Format
 
